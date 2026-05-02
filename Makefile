@@ -5,11 +5,11 @@ CFLAGS=-Wall -g
 
 all: main
 
-mcp23017.o: mcp23017.h mcp23017.c
-	$(CC) $(CFLAGS) -c mcp23017.c
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^ 
 
 main: mcp23017.o main.c
-	$(CC) $(CFLAGS) -o main main.c mcp23017.o
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
 	rm *.o main
